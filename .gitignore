@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Jupyter / Colab
+.ipynb_checkpoints/
+
+# 訓練產物(只該出現在 Colab / HF Hub,不進 git)
+outputs/
+unsloth_compiled_cache/
+lora_out*/
+merged*/
+*.safetensors
+*.gguf
+*.bin
+loss_curve.png
+
+# 其他
+.env
+wandb/
+.DS_Store
+Thumbs.db

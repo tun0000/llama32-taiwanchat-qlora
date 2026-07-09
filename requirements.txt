@@ -1,0 +1,7 @@
+# 本機(CPU)驗證專用 —— Colab 端的安裝完全由 train_colab.ipynb 的 install cell 處理。
+# 不要在本機 pip install unsloth(需要 GPU)。
+# 版本與 notebook install cell 的 pin 一致 → chat template 渲染/資料處理行為兩邊相同。
+transformers==4.56.2
+datasets==4.3.0
+huggingface_hub>=0.34.0,<1.0
+jinja2>=3.1

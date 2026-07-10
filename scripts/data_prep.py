@@ -14,6 +14,7 @@ tokenizer 與 dataset 都由呼叫端注入,因此在沒有 GPU、沒裝 unsloth
 """
 
 import hashlib
+from collections import Counter
 
 DATASET_ID = "yentinglin/TaiwanChat"
 
@@ -43,6 +44,29 @@ TAIWAN_TEST_QUESTIONS = [
     "「土豆」這個詞在台灣和中國大陸分別指什麼?請再舉三組兩岸說法不同的日常用語,整理成表格。",
     "請解釋台灣的「垃圾不落地」政策,以及為什麼垃圾車會播放音樂?",
 ]
+
+
+def count_sources(dataset):
+    """回傳 {id 資料源: 筆數},由多到少。TaiwanChat 有 9 種 id(flan/sharegpt/self/…)。"""
+    return dict(Counter(dataset["id"]).most_common())
+
+
+def filter_by_sources(dataset, include_sources):
+    """依 `id` 欄過濾資料源(消融實驗用)。include_sources=None → 原樣返回。
+
+    回傳 (dataset, stats dict)。與 notebook、preview 共用,確保兩邊過濾語意一致。
+    """
+    if include_sources is None:
+        return dataset, {"filtered": False}
+    include = set(include_sources)
+    n_before = len(dataset)
+    ds = dataset.filter(lambda ex: ex["id"] in include)
+    return ds, {
+        "filtered": True,
+        "include": sorted(include),
+        "n_before": n_before,
+        "n_after": len(ds),
+    }
 
 
 def normalize_text(text):

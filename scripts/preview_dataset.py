@@ -32,17 +32,25 @@ def main():
         help="tokenizer repo(預設用 ungated 鏡像,免 HF token)",
     )
     parser.add_argument("--max-seq-length", type=int, default=2048)
+    parser.add_argument(
+        "--include-sources",
+        default=None,
+        help="逗號分隔的 id 資料源清單(消融實驗用),例:'n/a,sharegpt,gpt4';不給 = 全部",
+    )
     args = parser.parse_args()
+    include = set(s.strip() for s in args.include_sources.split(",")) if args.include_sources else None
 
     from datasets import Dataset, load_dataset
     from transformers import AutoTokenizer
 
     print("=" * 88)
-    print(f"[1/5] streaming 下載 {data_prep.DATASET_ID} 前 {args.n} 筆 …")
+    print(f"[1/5] streaming 下載 {data_prep.DATASET_ID} 前 {args.n} 筆"
+          + (f"(僅 {sorted(include)} 源)" if include else "") + " …")
     stream = load_dataset(data_prep.DATASET_ID, split="train", streaming=True)
-    rows = list(islice(iter(stream), args.n))
+    picked = (row for row in stream if include is None or row["id"] in include)
+    rows = list(islice(picked, args.n))
     ds = Dataset.from_list(rows)
-    print(f"取得 {len(ds)} 筆")
+    print(f"取得 {len(ds)} 筆;資料源分佈:{data_prep.count_sources(ds)}")
     print()
     print(data_prep.describe_dataset(ds, n_rows=2))
 

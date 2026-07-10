@@ -6,12 +6,12 @@
 
 用 [Unsloth](https://github.com/unslothai/unsloth) 以 **QLoRA** 微調 **Llama-3.2-3B-Instruct**,資料集為 [yentinglin/TaiwanChat](https://huggingface.co/datasets/yentinglin/TaiwanChat) 子集(預設 15,000 筆),讓模型的**繁體中文與台灣在地語感**更自然。訓練全程在 Google Colab(L4/T4)完成,一張免費/Pro 等級的 GPU 就能複現。
 
-**成果模型**(訓練完成後出現):
+**成果模型**(在 Colab L4 上以 15,000 筆訓練 1 epoch、~1,840 步完成):
 
 | Repo | 內容 |
 |---|---|
-| [`<HF_USERNAME>/llama-3.2-3b-taiwan-chat-lora`](https://huggingface.co/models?search=llama-3.2-3b-taiwan-chat-lora) | LoRA adapter(數十 MB,搭配 base model 載入) |
-| [`<HF_USERNAME>/llama-3.2-3b-taiwan-chat`](https://huggingface.co/models?search=llama-3.2-3b-taiwan-chat) | 合併後完整 fp16 模型(下載即用) |
+| [`steven0226/llama-3.2-3b-taiwan-chat-lora`](https://huggingface.co/steven0226/llama-3.2-3b-taiwan-chat-lora) | LoRA adapter(97 MB,搭配 base model 載入) |
+| [`steven0226/llama-3.2-3b-taiwan-chat`](https://huggingface.co/steven0226/llama-3.2-3b-taiwan-chat) | 合併後完整 fp16 模型(6.4 GB,下載即用) |
 
 ## 為什麼做這個?
 

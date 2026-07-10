@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-"""把 scripts/data_prep.py 的內容注入 train_colab.ipynb 的共用模組 cell。
+"""把 scripts/data_prep.py 的內容注入 llama32-taiwanchat-qlora.ipynb 的共用模組 cell。
 
-train_colab.ipynb 必須保持「單一檔案、可直接上傳 Colab」,因此共用邏輯以
+llama32-taiwanchat-qlora.ipynb 必須保持「單一檔案、可直接上傳 Colab」,因此共用邏輯以
 實體複本嵌入 notebook;本腳本讓複本永遠機械同步、不可能默默漂移:
 
     python scripts/sync_notebook.py            # 注入(覆寫哨兵 cell)
@@ -17,7 +17,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-NOTEBOOK = ROOT / "train_colab.ipynb"
+NOTEBOOK = ROOT / "llama32-taiwanchat-qlora.ipynb"
 SOURCE = ROOT / "scripts" / "data_prep.py"
 SENTINEL = "# %%DATA_PREP_MODULE%%"
 
@@ -71,7 +71,7 @@ def main():
     NOTEBOOK.write_text(
         json.dumps(nb, ensure_ascii=False, indent=1) + "\n", encoding="utf-8"
     )
-    print("已注入 scripts/data_prep.py → train_colab.ipynb(哨兵 cell 已更新)。")
+    print("已注入 scripts/data_prep.py → llama32-taiwanchat-qlora.ipynb(哨兵 cell 已更新)。")
 
 
 if __name__ == "__main__":

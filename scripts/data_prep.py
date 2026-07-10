@@ -3,7 +3,7 @@
 
 這個模組同時被兩邊使用:
   1. scripts/preview_dataset.py —— 本機 CPU 驗證(plain transformers AutoTokenizer)
-  2. train_colab.ipynb          —— Colab GPU 訓練(unsloth 修補過的 tokenizer)
+  2. llama32-taiwanchat-qlora.ipynb —— Colab GPU 訓練(unsloth 修補過的 tokenizer)
 
 notebook 裡的副本由 scripts/sync_notebook.py 自動注入;改完本檔請執行:
     python scripts/sync_notebook.py

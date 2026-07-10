@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""本機(CPU)驗證:實際下載 TaiwanChat 前 N 筆,套用與 train_colab.ipynb
+"""本機(CPU)驗證:實際下載 TaiwanChat 前 N 筆,套用與 llama32-taiwanchat-qlora.ipynb
 完全相同的格式化邏輯(scripts/data_prep.py),印出轉換結果供人工檢查。
 
 用法(Windows / uv):

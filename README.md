@@ -6,7 +6,7 @@
 
 用 [Unsloth](https://github.com/unslothai/unsloth) 以 **QLoRA** 微調 **Llama-3.2-3B-Instruct**,資料集為 [yentinglin/TaiwanChat](https://huggingface.co/datasets/yentinglin/TaiwanChat) 子集(預設 15,000 筆),讓模型的**繁體中文與台灣在地語感**更自然。訓練全程在 Google Colab(L4/T4)完成,一張免費/Pro 等級的 GPU 就能複現。
 
-**成果模型**(在 Colab L4 上以 15,000 筆訓練 1 epoch、~1,840 步完成):
+**成果模型**(在 Colab A100 上以 15,000 筆訓練 1 epoch、~1,840 步完成):
 
 | Repo | 內容 |
 |---|---|

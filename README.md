@@ -132,11 +132,21 @@ v2 真正實質的進步是**結構穩定性**:Q4 那種無限重複迴圈的病
 
 **推測(非定論)**:Llama-3.1 與 Llama-3.2 的預訓練語料組成不同,可能讓 8B 的 base model 對中國大陸相關內容有更強、更「自信」的潛在關聯;微調沒能蓋掉這個更強的先驗,反而讓它用更完整、更有說服力的方式輸出錯誤內容。這比 3B「答非所問但至少沒說錯話」的失敗模式更危險——因為讀起來像是「認真且有把握地說錯」,而非「明顯答錯」。想驗證與改善的話,下一步可以試更長訓練(目前僅 1 epoch)、加大 LoRA rank,或針對「兩岸對比」類問題額外補強訓練資料。
 
+## GGUF 匯出
+
+用獨立的 [`export-to-gguf.ipynb`](export-to-gguf.ipynb) 把已合併的 3B 與 8B 模型轉成 GGUF(`q4_k_m` 量化),供 [Ollama](https://ollama.com)、[LM Studio](https://lmstudio.ai) 本機執行。這個 notebook**不訓練**,只載入已在 HF 上的合併模型轉檔上傳,單一模型約 10–20 分鐘,兩個模型不用改任何參數,上傳後直接 Run all。
+
+| Repo | 內容 |
+|---|---|
+| `<HF_USERNAME>/llama-3.2-3b-taiwan-chat-gguf` | 3B GGUF(q4_k_m) |
+| `<HF_USERNAME>/llama-3.1-8b-taiwan-chat-gguf` | 8B GGUF(q4_k_m) |
+
 ## Repo 結構
 
 ```
 llama32-taiwanchat-qlora/
-├── llama32-taiwanchat-qlora.ipynb  # 上傳 Colab 直接從頭跑到尾
+├── llama32-taiwanchat-qlora.ipynb  # 上傳 Colab 直接從頭跑到尾(訓練)
+├── export-to-gguf.ipynb       # 把已合併模型轉成 GGUF(不訓練,純轉檔)
 ├── scripts/
 │   ├── data_prep.py           # 資料處理「正本」(stdlib-only,CPU 可跑)
 │   ├── preview_dataset.py     # 本機驗證:下載前 50 筆實跑轉換

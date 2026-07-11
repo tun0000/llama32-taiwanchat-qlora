@@ -138,8 +138,8 @@ v2 真正實質的進步是**結構穩定性**:Q4 那種無限重複迴圈的病
 
 | Repo | 內容 |
 |---|---|
-| `<HF_USERNAME>/llama-3.2-3b-taiwan-chat-gguf` | 3B GGUF(q4_k_m) |
-| `<HF_USERNAME>/llama-3.1-8b-taiwan-chat-gguf` | 8B GGUF(q4_k_m) |
+| [`steven0226/llama-3.2-3b-taiwan-chat-gguf`](https://huggingface.co/steven0226/llama-3.2-3b-taiwan-chat-gguf) | 3B GGUF(q4_k_m,2.02 GB) |
+| [`steven0226/llama-3.1-8b-taiwan-chat-gguf`](https://huggingface.co/steven0226/llama-3.1-8b-taiwan-chat-gguf) | 8B GGUF(q4_k_m,4.92 GB) |
 
 ## Repo 結構
 
